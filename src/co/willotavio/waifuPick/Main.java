@@ -21,7 +21,8 @@ public class Main {
                 String userName = input.nextLine();
                 System.out.println("Enter your password:");
                 String userPassword = input.nextLine();
-                control.generateUser(userEmail, userName, userPassword);
+                User user = control.generateUser(userEmail, userName, userPassword);
+                control.insertUser(user);
                 control.listUsers();
             }
             else if(op.equals("L")){
@@ -60,10 +61,17 @@ public class Main {
                     "\nE.Exit");
             String op = input.nextLine().toUpperCase();
             if(op.equals("N")){
-                System.out.println("sla vei");
+                System.out.println("Enter your waifu name:");
+                String waifuName = input.nextLine();
+                System.out.println("Enter your waifu rank:");
+                String waifuRank = input.nextLine();
+                System.out.println("Enter your waifu review:");
+                String waifuReview = input.nextLine();
+                Waifu waifu = user.addWaifu(waifuName, waifuRank, waifuReview);
+                user.insertWaifu(waifu);
             }
             else if(op.equals("L")){
-                System.out.println("sla vei");
+                user.listWaifu();
             }
             else if(op.equals("A")){
                 System.out.println("sla vei");

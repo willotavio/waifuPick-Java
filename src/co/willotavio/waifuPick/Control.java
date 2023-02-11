@@ -8,14 +8,14 @@ public class Control {
 
     ArrayList<User> usersList = new ArrayList<>();
 
-    public void generateUser(String userEmail, String userName, String userPassword){
+    public User generateUser(String userEmail, String userName, String userPassword){
         User user = new User();
         user.setUserId(lastUser);
         user.setUserEmail(userEmail);
         user.setUserName(userName);
         user.setUserPassword(userPassword);
         this.lastUser++;
-        insertUser(user);
+        return user;
     }
 
     public void insertUser(User user){
@@ -28,7 +28,6 @@ public class Control {
                      this.usersList.get(i).getUserEmail() + " "
                      + this.usersList.get(i).getUserName());
         }
-
     }
 
     public User login(String userEmail, String userPassword){
