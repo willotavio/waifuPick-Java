@@ -73,8 +73,22 @@ public class Main {
             else if(op.equals("L")){
                 user.listWaifu();
             }
-            else if(op.equals("A")){
-                System.out.println("sla vei");
+            else if(op.equals("A")) {
+                try {
+                    System.out.println("Enter the waifu ID you want to access:");
+                    int waifuId = input.nextInt();
+
+                    Waifu waifu = user.accessWaifu(waifuId);
+                    if (waifu != null) {
+                        System.out.println(waifu.getWaifuName());
+                    } else {
+                        System.out.println("This ID doesn't exist!");
+                    }
+                    input.nextLine();
+                } catch (Exception e) {
+                    System.out.println("Please, enter a valid ID number");
+                    input.nextLine();
+                }
             }
             else if(op.equals("E")){
                 break;
@@ -83,6 +97,7 @@ public class Main {
                 System.out.println("Invalid option!" +
                         "\nTry again");
             }
+
         }
     }
 }

@@ -62,5 +62,14 @@ public class User {
         }
     }
 
+    public Waifu accessWaifu(int waifuId){
+        for (Waifu waifu : userWaifus){
+            if (waifu.getWaifuId() == waifuId){
+                return waifu;
+            }
+        }
+        return null;
+    }
+
 }
 
