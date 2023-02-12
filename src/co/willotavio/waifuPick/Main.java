@@ -1,5 +1,4 @@
 package co.willotavio.waifuPick;
-
 import java.util.Scanner;
 
 public class Main {
@@ -46,8 +45,6 @@ public class Main {
                         "\nTry again");
             }
         }
-
-
     }
 
     public static void operateAccount(User user){
@@ -75,18 +72,55 @@ public class Main {
             }
             else if(op.equals("A")) {
                 try {
+                    user.listWaifu();
                     System.out.println("Enter the waifu ID you want to access:");
                     int waifuId = input.nextInt();
-
+                    input.nextLine();
                     Waifu waifu = user.accessWaifu(waifuId);
                     if (waifu != null) {
                         System.out.println(waifu.getWaifuName());
+                        System.out.println("Choose an option" +
+                                "\nU.Update Waifu" +
+                                "\nD.Delete Waifu" +
+                                "\nE.Exit");
+                        op = input.nextLine().toUpperCase();
+                        if(op.equals("U")){
+                            System.out.println("Which attribute would you want to update?" +
+                                    "\n1.Name: " + waifu.getWaifuName() +
+                                    "\n2.Rank: " + waifu.getWaifuRank() +
+                                    "\n3.Review: " + waifu.getWaifuReview());
+                            int attribute = input.nextInt();
+                            input.nextLine();
+                            if(attribute > 4){
+                                System.out.println("Choose an valid option");
+                                break;
+                            }
+                            else{
+                                System.out.println("Enter the new attribute value:");
+                                String newValue = input.nextLine();
+                                if(!user.updateWaifu(waifuId, attribute, newValue)){
+                                    System.out.println("Error");
+                                }
+                                else{
+                                    System.out.println("Waifu updated!");
+                                }
+                            }
+                        }
+                        else if(op.equals("D")){
+                            System.out.println("sla vei");
+                        }
+                        else if(op.equals("E")){
+                            operateAccount(user);
+                        }
+                        else{
+                            System.out.println("Invalid option!" +
+                                    "\nTry again");
+                        }
                     } else {
                         System.out.println("This ID doesn't exist!");
                     }
-                    input.nextLine();
                 } catch (Exception e) {
-                    System.out.println("Please, enter a valid ID number");
+                    System.out.println("Enter a valid ID number!");
                     input.nextLine();
                 }
             }

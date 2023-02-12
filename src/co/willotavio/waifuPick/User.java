@@ -71,5 +71,25 @@ public class User {
         return null;
     }
 
+    public boolean updateWaifu(int waifuId, int attribute, String newValue){
+        if(attribute == 1){
+            userWaifus.get(waifuId-1).setWaifuName(newValue);
+            return true;
+        }
+        else if(attribute == 2){
+            userWaifus.get(waifuId-1).setWaifuRank(newValue);
+            return true;
+        }
+        else if(attribute == 3){
+            userWaifus.get(waifuId-1).setWaifuReview(newValue);
+            return true;
+        }
+        else{
+            System.out.println("Invalid option!" +
+                    "\nTry again");
+            return false;
+        }
+    }
+
 }
 
