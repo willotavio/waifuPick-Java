@@ -71,16 +71,16 @@ public class User {
         return null;
     }
 
-    public boolean updateWaifu(int waifuId, int attribute, String newValue){
-        if(attribute == 1){
+    public boolean updateWaifu(int waifuId, String attribute, String newValue){
+        if(attribute.equals("1")){
             userWaifus.get(waifuId-1).setWaifuName(newValue);
             return true;
         }
-        else if(attribute == 2){
+        else if(attribute.equals("2")){
             userWaifus.get(waifuId-1).setWaifuRank(newValue);
             return true;
         }
-        else if(attribute == 3){
+        else if(attribute.equals("3")){
             userWaifus.get(waifuId-1).setWaifuReview(newValue);
             return true;
         }

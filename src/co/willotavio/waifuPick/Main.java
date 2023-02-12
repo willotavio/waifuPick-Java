@@ -89,11 +89,10 @@ public class Main {
                                     "\n1.Name: " + waifu.getWaifuName() +
                                     "\n2.Rank: " + waifu.getWaifuRank() +
                                     "\n3.Review: " + waifu.getWaifuReview());
-                            int attribute = input.nextInt();
-                            input.nextLine();
-                            if(attribute > 4){
-                                System.out.println("Choose an valid option");
-                                break;
+                            String attribute = input.nextLine();
+                            if(!attribute.equals("1") && !attribute.equals("2") && !attribute.equals("3")){
+                                System.out.println("Choose a valid option");
+                                operateAccount(user);
                             }
                             else{
                                 System.out.println("Enter the new attribute value:");
