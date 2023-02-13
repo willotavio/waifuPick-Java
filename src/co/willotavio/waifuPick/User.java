@@ -39,6 +39,10 @@ public class User {
         return userPassword;
     }
 
+    public ArrayList<Waifu> getUserWaifus(){
+        return userWaifus;
+    }
+
     public Waifu addWaifu(String waifuName, String waifuRank, String waifuReview){
         Waifu waifu = new Waifu();
         waifu.setWaifuId(lastWaifu);
@@ -89,6 +93,17 @@ public class User {
                     "\nTry again");
             return false;
         }
+    }
+
+    public boolean DeleteWaifu(int waifuId){
+        userWaifus.remove(waifuId - 1);
+        for(Waifu waifu : userWaifus){
+            if(waifu.getWaifuId() > waifuId){
+                waifu.setWaifuId(waifu.getWaifuId()-1);
+            }
+        }
+        lastWaifu--;
+        return true;
     }
 
 }

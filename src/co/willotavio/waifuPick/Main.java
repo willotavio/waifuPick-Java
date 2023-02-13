@@ -66,6 +66,7 @@ public class Main {
                 String waifuReview = input.nextLine();
                 Waifu waifu = user.addWaifu(waifuName, waifuRank, waifuReview);
                 user.insertWaifu(waifu);
+                System.out.println("Waifu added!");
             }
             else if(op.equals("L")){
                 user.listWaifu();
@@ -106,7 +107,27 @@ public class Main {
                             }
                         }
                         else if(op.equals("D")){
-                            System.out.println("sla vei");
+                            System.out.println("Are you sure you want to delete " +
+                                    user.getUserWaifus().get(waifuId-1).getWaifuName() + "??" +
+                                    "\nY.Yes" +
+                                    "\nN.No");
+                            String choice = input.nextLine().toUpperCase();
+                            if(choice.equals("Y")){
+                                if(user.DeleteWaifu(waifuId)){
+                                    System.out.println("Waifu deleted :(");
+                                }
+                                else{
+                                    System.out.println("ERROR");
+                                    operateAccount(user);
+                                }
+                            }
+                            else if(choice.equals("N")){
+                                System.out.println("Delete canceled :)");
+                                operateAccount(user);
+                            }
+                            else{
+                                System.out.println("Choose a valid option!");
+                            }
                         }
                         else if(op.equals("E")){
                             operateAccount(user);
