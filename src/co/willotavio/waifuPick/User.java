@@ -95,7 +95,7 @@ public class User {
         }
     }
 
-    public boolean DeleteWaifu(int waifuId){
+    public boolean deleteWaifu(int waifuId){
         userWaifus.remove(waifuId - 1);
         for(Waifu waifu : userWaifus){
             if(waifu.getWaifuId() > waifuId){

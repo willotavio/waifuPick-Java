@@ -39,4 +39,13 @@ public class Control {
         return null;
     }
 
+    public boolean userExists(String userEmail){
+        for (User account : usersList) {
+            if (account.getUserEmail().equals(userEmail)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

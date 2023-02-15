@@ -16,13 +16,18 @@ public class Main {
             if (op.equals("C")) {
                 System.out.println("Enter your email:");
                 String userEmail = input.nextLine();
-                System.out.println("Enter your user name:");
-                String userName = input.nextLine();
-                System.out.println("Enter your password:");
-                String userPassword = input.nextLine();
-                User user = control.generateUser(userEmail, userName, userPassword);
-                control.insertUser(user);
-                control.listUsers();
+                if(!control.userExists(userEmail)){
+                    System.out.println("An user with this email already exists");
+                }
+                else{
+                    System.out.println("Enter your user name:");
+                    String userName = input.nextLine();
+                    System.out.println("Enter your password:");
+                    String userPassword = input.nextLine();
+                    User user = control.generateUser(userEmail, userName, userPassword);
+                    control.insertUser(user);
+                    control.listUsers();
+                }
             }
             else if(op.equals("L")){
                 System.out.println("Enter your email:");
@@ -113,7 +118,7 @@ public class Main {
                                     "\nN.No");
                             String choice = input.nextLine().toUpperCase();
                             if(choice.equals("Y")){
-                                if(user.DeleteWaifu(waifuId)){
+                                if(user.deleteWaifu(waifuId)){
                                     System.out.println("Waifu deleted :(");
                                 }
                                 else{
