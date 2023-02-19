@@ -13,10 +13,10 @@ public class Main {
                     "\nL.Login" +
                     "\nE.Exit");
             String op = input.nextLine().toUpperCase();
-            if (op.equals("C")) {
+            if(op.equals("C")) {
                 System.out.println("Enter your email:");
                 String userEmail = input.nextLine();
-                if(!control.userExists(userEmail)){
+                if(control.userExists(userEmail)){
                     System.out.println("An user with this email already exists");
                 }
                 else{
@@ -32,14 +32,22 @@ public class Main {
             else if(op.equals("L")){
                 System.out.println("Enter your email:");
                 String userEmail = input.nextLine();
-                System.out.println("Enter your password:");
-                String userPassword = input.nextLine();
-                User result = control.login(userEmail, userPassword);
-                if (result != null){
-                    operateAccount(result);
+                if (control.userExists(userEmail)){
+                    System.out.println("Enter your password:");
+                    String userPassword = input.nextLine();
+                    if(control.login(userEmail, userPassword)){
+                        for (User user : control.getUser()) {
+                            if (user.getUserEmail().equals(userEmail)) {
+                                operateAccount(user);
+                            }
+                        }
+                    }
+                    else{
+                        System.out.println("Invalid credentials!");
+                    }
                 }
-                else{
-                    System.out.println("Invalid credentials!");
+                else {
+                    System.out.println("This account doesn't exist!");
                 }
             }
             else if(op.equals("E")){

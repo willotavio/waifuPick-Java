@@ -6,7 +6,11 @@ public class Control {
 
     public int lastUser = 1;
 
-    ArrayList<User> usersList = new ArrayList<>();
+    private ArrayList<User> usersList = new ArrayList<>();
+
+    public ArrayList<User> getUser(){
+        return this.usersList;
+    }
 
     public User generateUser(String userEmail, String userName, String userPassword){
         User user = new User();
@@ -30,22 +34,22 @@ public class Control {
         }
     }
 
-    public User login(String userEmail, String userPassword){
+    public boolean login(String userEmail, String userPassword){
         for(User user : usersList){
             if (user.getUserEmail().equals(userEmail) && user.getUserPassword().equals(userPassword)){
-                return user;
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
     public boolean userExists(String userEmail){
         for (User account : usersList) {
             if (account.getUserEmail().equals(userEmail)) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
 }
